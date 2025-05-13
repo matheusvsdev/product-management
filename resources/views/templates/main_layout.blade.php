@@ -7,7 +7,12 @@
     <title>{{ $title }}</title>
 </head>
 <body>
+    @include('nav')
+    
     @yield('content')
+
+    @include('footer')
+    
     <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
