@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -11,3 +12,5 @@ Route::get('/', function () {
         die('Não foi possível conectar com a base de dados. Erro:' .$e->getMessage());
     }
 });
+
+Route::get('/main', [ProductController::class, 'index']);
