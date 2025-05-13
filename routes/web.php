@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+/*
 Route::get('/', function () {
     try {
         DB::connection()->getPdo();
@@ -12,5 +13,10 @@ Route::get('/', function () {
         die('Não foi possível conectar com a base de dados. Erro:' .$e->getMessage());
     }
 });
+*/
 
-Route::get('/main', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('index');
+
+// Login Routes
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login_submit', [UserController::class, 'login_submit'])->name('login_submit');
