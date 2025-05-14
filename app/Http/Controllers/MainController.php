@@ -11,6 +11,7 @@ class MainController extends Controller
     {
         $data = [
             'title' => 'Gerenciador de Produtos',
+            'datatables' => true,
             'products' => $this->_get_tasks()
         ];
 

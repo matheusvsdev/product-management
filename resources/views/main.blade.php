@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
 
-            <div class="row align-items-center my-2">
+            <div class="row align-items-center mb-3">
                 <div class="col">
                     <h4>Produtos</h4>
                 </div>
@@ -15,7 +15,7 @@
             </div>
 
             @if ($products->count() != 0)
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" id="table_products" width="100%">
                 <thead class="table-dark">
                     <tr>
                         <th class="w-30">Produto</th>
@@ -24,16 +24,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($products as $product)
-                        <tr>
-                            <td>{{ $product->product_name }}</td>
-                            <td>{{ $product->product_description }}</td>
-                            <td class="text-center">{{ $product->product_price }}</td>
-                            <td class="text-center">[actions]</td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                <tbody></tbody>
             </table>
 
             @else
@@ -43,6 +34,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#table_products').DataTable({
+            data: @json($products),
+            columns: [
+                { data: 'product_name' },
+                { data: 'product_description' },
+                { data: 'product_price' },
+                { data: 'id' },
+            ]
+        });
+    });
+</script>
 
 @endsection
 

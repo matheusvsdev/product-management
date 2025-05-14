@@ -47,7 +47,7 @@ class ProductController extends Controller
                          ->whereNull('deleted_at')
                          ->first();
         if($product) {
-            return redirect()->route('new_product')->with('task_error', 'Já existe um produto com esse nome.');
+            return redirect()->route('new_product')->with('product_error', 'Já existe um produto com esse nome.');
         }
 
         // insert new product

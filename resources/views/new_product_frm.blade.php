@@ -38,9 +38,9 @@
                         <button type="submit" class="btn btn-secondary pc-5 m-1">Adicionar</button>
                     </div>
                 </form>
-                @if (session()->has('task_error'))
+                @if (session()->has('product_error'))
                     <div class="alert alert-danger text-center p-1">
-                        {{ session()->get('task_error') }}
+                        {{ session()->get('product_error') }}
                     </div>
                 @endif
             </div>
