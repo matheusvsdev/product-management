@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Main;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainController;
+use App\Http\Middleware\CheckLogin;
+use App\Http\Middleware\CheckLogout;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,10 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', [ProductController::class, 'index'])->name('index');
-
 // Login Routes
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::post('/login_submit', [UserController::class, 'login_submit'])->name('login_submit');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(CheckLogout::class);
+Route::post('/login_submit', [AuthController::class, 'login_submit'])->name('login_submit')->middleware(CheckLogout::class);
 
 // Main Page
-Route::get('/main', [Main::class, 'main'])->name('main');
+Route::get('/', [MainController::class, 'index'])->name('index')->middleware(CheckLogin::class);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware(CheckLogin::class);

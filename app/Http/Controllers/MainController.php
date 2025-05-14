@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Main extends Controller
+class MainController extends Controller
 {
-    public function main()
+    public function index()
     {
         $data = [
-            'title' => 'Main'
+            'title' => 'Gerenciador de Produtos'
         ];
 
         return view('main', $data);

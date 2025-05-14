@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        echo 'Gestor de Tarefas';
-    }
 
     /*
     public function products()
