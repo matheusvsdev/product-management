@@ -14,12 +14,12 @@
                 </div>
             </div>
 
-            @if ($products->count() != 0)
+            @if (count($products) != 0)
             <table class="table table-striped table-bordered" id="table_products" width="100%">
                 <thead class="table-dark">
                     <tr>
-                        <th class="w-30">Produto</th>
-                        <th class="w-35 text-center">Descrição</th>
+                        <th class="w-20">Produto</th>
+                        <th class="w-40 text-center">Descrição</th>
                         <th class="w-10 text-center">Preço</th>
                         <th></th>
                     </tr>
@@ -42,8 +42,8 @@
             columns: [
                 { data: 'product_name' },
                 { data: 'product_description' },
-                { data: 'product_price' },
-                { data: 'id' },
+                { data: 'product_price', className: 'text-center' },
+                { data: 'product_actions', className: 'text-center' },
             ]
         });
     });

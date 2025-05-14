@@ -29,3 +29,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 // Products
 Route::get('/new_product', [ProductController::class, 'new_product'])->name('new_product')->middleware(CheckLogin::class);
 Route::post('/new_product_submit', [ProductController::class, 'new_product_submit'])->name('new_product_submit')->middleware(CheckLogin::class);
+
+Route::get('/edit_product/{id}', [ProductController::class, 'edit_product'])->name('edit_product')->middleware(CheckLogin::class);
+Route::post('/edit_product_submit', [ProductController::class, 'edit_product_submit'])->name('edit_product_submit')->middleware(CheckLogin::class);
+
+Route::get('/delete_product/{id}', [ProductController::class, 'delete_product'])->name('delete_product')->middleware(CheckLogin::class);
+Route::post('/edit_product_confirm/{id}', [ProductController::class, 'delete_product_confirm'])->name('delete_product_confirm')->middleware(CheckLogin::class);
