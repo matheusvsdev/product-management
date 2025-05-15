@@ -1,7 +1,7 @@
 @extends('templates/main_layout')
 
 @section('content')
-<div class="container">
+<div class="container mb-3">
     <div class="row">
         <div class="col">
 
