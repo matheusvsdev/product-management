@@ -44,7 +44,19 @@
                 { data: 'product_description' },
                 { data: 'product_price', className: 'text-center' },
                 { data: 'product_actions', className: 'text-center' },
-            ]
+            ],
+            language: {
+                "search": "Buscar:",
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                "infoEmpty": "Nenhum registro disponível",
+                "paginate": {
+                    "first": "Primeira",
+                    "previous": "Anterior",
+                    "next": "Próxima",
+                    "last": "Última"
+                }
+            }
         });
     });
 </script>

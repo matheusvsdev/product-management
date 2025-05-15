@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class MainController extends Controller
 {
@@ -12,13 +13,13 @@ class MainController extends Controller
         $data = [
             'title' => 'Gerenciador de Produtos',
             'datatables' => true,
-            'products' => $this->_get_tasks()
+            'products' => $this->_get_products()
         ];
 
         return view('main', $data);
     }
 
-    private function _get_tasks()
+    private function _get_products()
     {
         $model = new ProductModel();
 
@@ -28,8 +29,9 @@ class MainController extends Controller
         $collection = [];
         foreach($products as $product) {
 
-            $link_edit = '<a href="' . route('edit_product', ['id' => $product->id]). '" class="btn btn-secondary m-1"><i class="bi bi-pencil-square"></i></a>';
-            $link_delete = '<a href="' . route('delete_product', ['id' => $product->id]). '" class="btn btn-secondary m-1"><i class="bi bi-trash"></i></a>';
+                                                              // Criptografando o ID na URL
+            $link_edit = '<a href="' . route('edit_product', ['id' => Crypt::encrypt($product->id)]). '" class="btn btn-secondary m-1"><i class="bi bi-pencil-square"></i></a>';
+            $link_delete = '<a href="' . route('delete_product', ['id' => Crypt::encrypt($product->id)]). '" class="btn btn-secondary m-1"><i class="bi bi-trash"></i></a>';
 
             $collection[] = [
                 'product_name' => $product->product_name,
