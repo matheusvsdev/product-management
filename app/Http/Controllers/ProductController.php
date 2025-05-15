@@ -140,4 +140,47 @@ class ProductController extends Controller
 
         return redirect()->route('index');
     }
+
+    public function delete_product($id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+            return redirect()->route('index');
+        }
+
+        // get product data
+        $model = new ProductModel();
+        $product = $model->where('id', '=', $id)->first();
+
+        if(!$product) {
+            return redirect()->route('index');
+        }
+
+        $data = [
+            'title' => 'Excluir Tarefa',
+            'product' => $product
+        ];
+
+        return view('delete_product', $data);
+    }
+
+    public function delete_product_confirm($id)
+    {
+        $id_product = null;
+        try {
+            $id_product = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+            return redirect()->route('index');
+        }
+
+        // delete product (soft delete)
+        $model = new ProductModel();
+        $model->where('id', '=', $id_product)
+                ->update([
+                    'deleted_at' => date('Y-m-d H:i:s')
+                ]);
+
+        return redirect()->route('index');
+    }
 }
